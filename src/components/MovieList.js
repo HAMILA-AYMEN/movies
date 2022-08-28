@@ -121,9 +121,9 @@ function MovieList() {
         ];
           // List of all movies all the filters
         const [filteredList, setFilteredList] = useState(movies);
-      // Selected Brand name filter
+      // Selected Titlefilter
   const [selectedTitle, setSelectedTitle] = useState("");
-  // Selected Year filter
+  // Selected Rate filter
   const [selectedRate, setSelectedRate] = useState();
   const filterByTitle = (filteredData) => {
     // Avoid filter for empty string
