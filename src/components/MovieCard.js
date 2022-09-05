@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Rating from '@material-ui/lab/Rating';
+import Button from "react-bootstrap/Button";
 import {useNavigate} from 'react-router-dom'
 
 
@@ -10,12 +11,12 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-function MovieCard({item}) {
+function MovieCard({movie}) {
   const navigate = useNavigate();
 
     const navigateToTrailer = () => {
       // 👇️ navigate to /Trailer
-      navigate(`/Trailer/${item.id}`);
+      navigate(`/Trailer/${movie.id}`);
     };
  
   
@@ -23,16 +24,16 @@ function MovieCard({item}) {
   
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img id='img' variant="top" src={item.posterUrl} onClick={navigateToTrailer} />
+      <Card.Img id='img' variant="top" src={movie.posterUrl}  />
       <Card.Body>
-        <Card.Title >{item.title}</Card.Title>
-        <Card.Text>{item.description}</Card.Text>
-       
+        <Card.Title >{movie.title}</Card.Title>
+        <Card.Text>{movie.description}</Card.Text>
+        <Button variant="primary" onClick={navigateToTrailer}>Go Trailer</Button>
        
        
         <Rating
           name="Rating Label"
-          value={item.rate}
+          value={movie.rate}
          
         />
       

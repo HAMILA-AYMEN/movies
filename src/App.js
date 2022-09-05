@@ -1,18 +1,22 @@
 
 import './App.css';
+import React, { useState} from "react";
 import { Route, Routes } from 'react-router-dom';
 import MovieList from './components/MovieList';
-import  Navbar  from './components/Navbar'
+import  NavBar  from './components/NavBar'
 import Trailer from './components/Trailer';
+import AddMovie from './components/AddMovie';
 
-import React, { useState} from "react";
+
 
 
 
 
 
 function App() {
-  const movies=[
+  const [searchTitle, setsearchTitle] = useState("");
+  const [searchRate, setsearchRate] = useState(1);
+  const [movies,setMovies ]=useState([
     {
       title: "Titanic",
       description:
@@ -130,17 +134,24 @@ function App() {
   
     }  
 
-  ];
+  ]);
  
-
+ 
+  const addMovie = (newMovie) => {
+    setMovies([...movies, newMovie]);
+  };
 
    
   return (
     <div> 
-      <Navbar />
+      <NavBar setsearchTitle={setsearchTitle} setsearchRate={setsearchRate} />
+      <AddMovie addMovie={addMovie} />
 
       <Routes>
-      <Route path="/" element={ <MovieList movies={movies}/> } />
+      <Route path="/" element={ <MovieList movies={movies}
+        searchTitle={searchTitle}
+        searchRate={searchRate}/> } />
+        
       <Route path="/Trailer/:id" element={ <Trailer movies={movies}/>} />
       </Routes>
       
